@@ -1,0 +1,66 @@
+news:
+  rss_feeds:
+    - name: BBC News
+      url: http://feeds.bbci.co.uk/news/rss.xml
+    - name: CNN
+      url: http://rss.cnn.com/rss/edition.rss
+    - name: Reuters
+      url: http://feeds.reuters.com/reuters/topNews
+    - name: Associated Press
+      url: https://feeds.apnews.com/rss/apf-topnews
+  news_api_key: null  # Optional: get from https://newsapi.org/
+  keywords:
+    - technology
+    - science
+    - world
+    - breaking
+
+comfyui:
+  server_address: 127.0.0.1:8188
+  workflow_path: workflows/news_image.json
+  output_dir: output/images
+  width: 768
+  height: 768
+  steps: 35
+  cfg_scale: 8.0
+  sampler: dpmpp_2m
+  scheduler: karras
+  seed: -1
+  negative_prompt: text, watermark, ugly, deformed, blurry, bad anatomy, bad proportions, low quality, pixelated, jpeg artifacts, oversaturated, undersaturated, overexposed, underexposed, duplicate, cropped, worst quality, low resolution, distorted, disfigured, bad composition
+  prompt_templates:
+    news: 'professional news illustration of {headline}, high quality digital art, detailed, cinematic lighting, trending on artstation, 8k resolution, photorealistic style, professional journalism photography, masterpiece'
+    funny: 'funny cartoon illustration of {headline}, humorous, vibrant colors, expressive characters, comedy style, meme-worthy, playful, exaggerated expressions, digital art, high quality, detailed'
+    artistic: 'artistic interpretation of {headline}, abstract modern art, creative composition, stylized, avant-garde, museum quality, professional art, detailed brushwork, vibrant colors, masterpiece'
+    realistic: 'photorealistic depiction of {headline}, professional journalism photography, documentary style, high resolution, detailed, perfect lighting, award-winning photography, canon 5d mark iv, 85mm lens, shallow depth of field'
+
+scheduler:
+  interval_hours: 1
+  max_images_per_run: 3
+  styles:
+    - news illustration
+    - funny
+    - artistic
+  use_cron: false
+  cron_expression: '0 * * * *'  # Every hour
+  run_immediately: true
+  generation_delay: 5  # seconds between generations
+  priority_keywords:
+    - breakthrough
+    - discover
+    - amazing
+    - incredible
+    - shocking
+    - bizarre
+    - unusual
+    - first
+    - largest
+    - smallest
+    - record
+    - viral
+    - trending
+    - exclusive
+    - mystery
+    - secret
+  cleanup_enabled: true
+  max_image_age_days: 7
+  max_history: 1000
