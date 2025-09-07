@@ -51,8 +51,8 @@ ComfyUI/
 # Config with sensitive data
 config/config_local.yaml
 
-# Batch files (Windows specific)
-*.bat
+# Batch files (Windows specific) - excluding user-specific ones
+# *.bat  # Commented out to allow essential startup scripts
 
 # Model files (too large for git)
 *.safetensors
