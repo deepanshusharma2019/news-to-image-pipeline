@@ -1,0 +1,107 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 156680208700286,
+      "steps": 50,
+      "cfg": 7.5,
+      "sampler_name": "dpmpp_2m_sde_karras",
+      "scheduler": "karras", 
+      "denoise": 1,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler (GPU Optimized)"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "DreamShaper_8_pruned.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image (1024x1024)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": "beautiful landscape, masterpiece, high quality, 8k resolution, photorealistic",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "text, watermark, ugly, deformed, blurry, bad anatomy, bad proportions, low quality, pixelated, jpeg artifacts, oversaturated, undersaturated, overexposed, underexposed, duplicate, cropped, worst quality, low resolution, distorted, disfigured, bad composition, extra limbs, missing limbs, floating limbs, disconnected limbs, malformed hands, blurry hands, mutated hands, deformed hands, missing fingers, extra fingers, fused fingers, too many fingers, long neck, long body, imperfect eyes, deformed eyes, unnatural face, deformed face, imperfect face, multiple heads, multiple bodies, plastic, wax, unnatural skin, oversaturated, painting, drawing, sketch, cartoon",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative - Enhanced)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "NewsImage_GPU",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image (GPU)"
+    }
+  }
+}

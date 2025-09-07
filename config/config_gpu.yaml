@@ -1,0 +1,81 @@
+# GPU-Optimized Configuration for NVIDIA Laptop
+# Copy this to your config/config.yaml on the NVIDIA laptop
+
+news:
+  rss_feeds:
+    - name: BBC News
+      url: http://feeds.bbci.co.uk/news/rss.xml
+    - name: CNN
+      url: http://rss.cnn.com/rss/edition.rss
+    - name: Reuters
+      url: http://feeds.reuters.com/reuters/topNews
+    - name: Associated Press
+      url: https://feeds.apnews.com/rss/apf-topnews
+  news_api_key: null
+  keywords:
+    - technology
+    - science
+    - world
+    - breaking
+    - breakthrough
+    - discover
+    - amazing
+
+comfyui:
+  server_address: 127.0.0.1:8188
+  workflow_path: workflows/news_image.json
+  output_dir: output/images
+  # Enhanced settings for GPU
+  width: 1024          # Higher resolution for GPU
+  height: 1024         # Higher resolution for GPU
+  steps: 50            # More steps for better quality
+  cfg_scale: 7.5       # Optimal CFG for quality
+  sampler: dpmpp_2m_sde_karras  # Better sampler for GPU
+  scheduler: karras
+  seed: -1
+  # GPU optimizations
+  gpu_memory_fraction: 0.9  # Use 90% of GPU memory
+  enable_xformers: true     # Enable memory efficient attention
+  enable_sequential_cpu_offload: false  # Keep everything on GPU
+  negative_prompt: text, watermark, ugly, deformed, blurry, bad anatomy, bad proportions, low quality, pixelated, jpeg artifacts, oversaturated, undersaturated, overexposed, underexposed, duplicate, cropped, worst quality, low resolution, distorted, disfigured, bad composition, extra limbs, missing limbs, floating limbs, disconnected limbs, malformed hands, blurry hands, mutated hands, deformed hands, missing fingers, extra fingers, fused fingers, too many fingers, long neck, long body, imperfect eyes, deformed eyes, unnatural face, deformed face, imperfect face, multiple heads, multiple bodies, plastic, wax, unnatural skin, oversaturated, painting, drawing, sketch, cartoon
+  
+  prompt_templates:
+    news: 'photorealistic news scene depicting {headline}, professional journalism photography, award-winning composition, perfect lighting, sharp focus, high detail, 8k resolution, masterpiece quality, cinematic atmosphere, trending on news photography awards'
+    funny: 'hilarious cartoon illustration of {headline}, vibrant colors, exaggerated expressions, comedy gold, meme-worthy, digital art masterpiece, trending on social media, funny facial expressions, comedic timing, high quality cartoon art'
+    artistic: 'stunning artistic interpretation of {headline}, contemporary art style, museum quality, creative composition, bold colors, artistic masterpiece, gallery worthy, avant-garde, modern art, professional artwork, trending on artstation'
+    realistic: 'ultra-realistic photographic representation of {headline}, professional DSLR photography, perfect exposure, sharp details, photojournalism excellence, award-winning photography, National Geographic style, documentary photography, 85mm lens, f/1.4'
+
+scheduler:
+  interval_hours: 1
+  max_images_per_run: 5     # More images since GPU is faster
+  styles:
+    - news illustration
+    - funny
+    - artistic
+    - realistic
+  use_cron: false
+  cron_expression: '0 * * * *'
+  run_immediately: true
+  generation_delay: 2       # Faster generation, less delay
+  priority_keywords:
+    - breakthrough
+    - discover
+    - amazing
+    - incredible
+    - shocking
+    - bizarre
+    - unusual
+    - first
+    - largest
+    - smallest
+    - record
+    - viral
+    - trending
+    - exclusive
+    - mystery
+    - secret
+    - revolutionary
+    - unprecedented
+  cleanup_enabled: true
+  max_image_age_days: 14    # Keep images longer
+  max_history: 2000

@@ -45,13 +45,8 @@ output/images/*.png
 output/images/*.jpg
 output/images/*.jpeg
 
-# ComfyUI specific
-ComfyUI/output/
-ComfyUI/temp/
-ComfyUI/input/
-ComfyUI/models/
-ComfyUI/custom_nodes/
-ComfyUI/user/
+# ComfyUI specific (entire directory - too large for git)
+ComfyUI/
 
 # Config with sensitive data
 config/config_local.yaml
