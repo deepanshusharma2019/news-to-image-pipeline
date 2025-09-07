@@ -9,6 +9,6 @@ echo Starting the news-to-image pipeline...
 echo.
 
 REM Run the pipeline in scheduled mode
-C:/Users/deepanshsharma/AppData/Local/Programs/Python/Python312/python.exe src/main.py --mode schedule --verbose
+C:\Users\Dipanshu\AppData\Local\Microsoft\WindowsApps\python.exe src/main.py --mode schedule --verbose
 
 pause

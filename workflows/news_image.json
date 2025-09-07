@@ -1,11 +1,11 @@
 {
   "3": {
     "inputs": {
-      "seed": 156680208700286,
-      "steps": 35,
-      "cfg": 8,
-      "sampler_name": "dpmpp_2m",
-      "scheduler": "karras", 
+  "seed": 156680208700286,
+  "steps": 20,
+  "cfg": 7.5,
+  "sampler_name": "euler",
+  "scheduler": "karras", 
       "denoise": 1,
       "model": [
         "4",
@@ -26,7 +26,7 @@
     },
     "class_type": "KSampler",
     "_meta": {
-      "title": "KSampler"
+      "title": "KSampler (GPU Optimized)"
     }
   },
   "4": {
@@ -40,18 +40,18 @@
   },
   "5": {
     "inputs": {
-      "width": 768,
-      "height": 768,
-      "batch_size": 1
+  "width": 512,
+  "height": 512,
+  "batch_size": 1
     },
     "class_type": "EmptyLatentImage",
     "_meta": {
-      "title": "Empty Latent Image"
+      "title": "Empty Latent Image (1024x1024)"
     }
   },
   "6": {
     "inputs": {
-      "text": "beautiful landscape, masterpiece, high quality",
+      "text": "beautiful landscape, masterpiece, high quality, 8k resolution, photorealistic",
       "clip": [
         "4",
         1
@@ -64,7 +64,7 @@
   },
   "7": {
     "inputs": {
-      "text": "text, watermark, ugly, deformed, blurry, bad anatomy, bad proportions, low quality, pixelated, jpeg artifacts, oversaturated, undersaturated, overexposed, underexposed, duplicate, cropped, worst quality, low resolution, distorted, disfigured, bad composition",
+      "text": "text, watermark, ugly, deformed, blurry, bad anatomy, bad proportions, low quality, pixelated, jpeg artifacts, oversaturated, undersaturated, overexposed, underexposed, duplicate, cropped, worst quality, low resolution, distorted, disfigured, bad composition, extra limbs, missing limbs, floating limbs, disconnected limbs, malformed hands, blurry hands, mutated hands, deformed hands, missing fingers, extra fingers, fused fingers, too many fingers, long neck, long body, imperfect eyes, deformed eyes, unnatural face, deformed face, imperfect face, multiple heads, multiple bodies, plastic, wax, unnatural skin, oversaturated, painting, drawing, sketch, cartoon",
       "clip": [
         "4",
         1
@@ -72,7 +72,7 @@
     },
     "class_type": "CLIPTextEncode",
     "_meta": {
-      "title": "CLIP Text Encode (Negative)"
+      "title": "CLIP Text Encode (Negative - Enhanced)"
     }
   },
   "8": {
@@ -93,7 +93,7 @@
   },
   "9": {
     "inputs": {
-      "filename_prefix": "ComfyUI",
+      "filename_prefix": "NewsImage_GPU",
       "images": [
         "8",
         0
@@ -101,7 +101,7 @@
     },
     "class_type": "SaveImage",
     "_meta": {
-      "title": "Save Image"
+      "title": "Save Image (GPU)"
     }
   }
 }
