@@ -18,11 +18,12 @@ def main():
     with open("config/config.yaml", "r") as f:
         config = yaml.safe_load(f)
     composer = NewsImageComposer(config)
-    for idx, headline in enumerate(headlines[:5]):
-        print(f"Processing headline {idx+1}: {headline}")
+    if headlines:
+        headline = headlines[0]
+        print(f"Processing headline: {headline}")
         summary = summary_gen.generate_summary(headline)
         print(f"Summary: {summary}")
-    composer.generate_news_image_with_summary(headline, summary, style="news")
+        composer.generate_news_image_with_summary(headline, summary, style="news")
 
 if __name__ == "__main__":
     main()
