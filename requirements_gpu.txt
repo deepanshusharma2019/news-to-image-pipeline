@@ -1,0 +1,21 @@
+# GPU-optimized requirements for NVIDIA laptops
+# Install these AFTER the main requirements.txt
+
+# PyTorch with CUDA support (install via index URL)
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# Additional GPU acceleration packages
+xformers>=0.0.22
+triton>=2.1.0
+
+# CUDA memory optimization
+nvidia-ml-py3>=7.352.0
+
+# Optional: Better image processing
+opencv-python>=4.8.0
+
+# Development tools
+jupyterlab>=4.0.0
+
+# Note: Use this command for GPU setup:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121

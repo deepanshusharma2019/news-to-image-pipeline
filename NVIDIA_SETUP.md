@@ -19,11 +19,14 @@ cd news-to-image-pipeline
 
 ### Step 2: Install Python Dependencies
 ```bash
-# Install basic requirements
+# Install basic requirements (includes all core packages)
 pip install -r requirements.txt
 
-# Install PyTorch with CUDA support for NVIDIA GPU
+# Install GPU-optimized PyTorch with CUDA support
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# Install additional GPU packages (optional but recommended)
+pip install -r requirements_gpu.txt
 ```
 
 ### Step 3: Download ComfyUI
